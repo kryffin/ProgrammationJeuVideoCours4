@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Deplacement : MonoBehaviour
 {
-    [Range(-5f, 5f)]
+    [Range(-50f, 50f)]
     public float Speed;
     public Moteur Moteur;
     public bool ReservoirInfini;
@@ -42,7 +42,7 @@ public class Deplacement : MonoBehaviour
 
         foreach (GameObject g in Wheels)
         {
-            g.transform.Rotate(new Vector3(Speed, 0f, 0f));
+            g.transform.Rotate(new Vector3(Speed / 10f, 0f, 0f));
         }
     }
 }
