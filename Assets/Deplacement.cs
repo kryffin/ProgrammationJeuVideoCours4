@@ -2,16 +2,27 @@ using UnityEngine;
 
 public class Deplacement : MonoBehaviour
 {
+    private GameObject[] _wheels;
+
     [Range(-50f, 50f)]
     public float Speed;
     public Moteur Moteur;
     public bool ReservoirInfini;
 
-    public GameObject[] Wheels;
+    [Range(0f, 5f)]
+    public float WheelThreshold;
 
     private void Start()
     {
         Moteur = new Moteur();
+
+        _wheels = new GameObject[]
+        {
+            transform.Find("Wheel_fl").gameObject,
+            transform.Find("Wheel_fr").gameObject,
+            transform.Find("Wheel_rl").gameObject,
+            transform.Find("Wheel_rr").gameObject
+        };
     }
 
     public void Update()
@@ -40,9 +51,13 @@ public class Deplacement : MonoBehaviour
             gameObject.transform.position += velocity.normalized * Speed * Time.deltaTime;
         }
 
-        foreach (GameObject g in Wheels)
+        foreach (GameObject g in _wheels)
         {
             g.transform.Rotate(new Vector3(Speed / 10f, 0f, 0f));
+            if (Mathf.Abs(Speed) >= WheelThreshold)
+                g.GetComponent<MeshRenderer>().material.color = Color.red;
+            else
+                g.GetComponent<MeshRenderer>().material.color = Color.white;
         }
     }
 }
