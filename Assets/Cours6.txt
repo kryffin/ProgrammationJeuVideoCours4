@@ -1,0 +1,8 @@
+3. Questions :
+	- Avez-vous constaté des différences entre les versions b) et d) ?
+	-> Oui, si l'objet est désactivé dans l'inpecteur, aucun de ses scripts rattaché ne se lanceront, ni sa fonction Awake() d'ailleurs. Or s'il est activé dans l'inspecteur tout se passe comme prévu.
+
+	- Pouvez-vous faire appel aux méthodes Awake() et/ou Start() avce un argument ?
+	-> Non, ces fonctions ne prennent aucun argument.
+
+5. Les coffres sont bien détruit avec le script.
